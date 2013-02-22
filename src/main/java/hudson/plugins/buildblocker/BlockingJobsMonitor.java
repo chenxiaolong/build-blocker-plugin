@@ -90,22 +90,17 @@ public class BlockingJobsMonitor {
             }
         }
 
-        /**
-         * check the list of items that have
-         * already been approved for building
-         * (but haven't actually started yet)
-         */
-        List<Queue.Item> allItems
+        Queue.Item[] allItems
             = Jenkins.getInstance().getQueue().getItems();
 
         for (Queue.Item currentItem : allItems) {
-        	if(item != currentItem) {
-	            for (String blockingJob : this.blockingJobs) {
-	                if(currentItem.task.getFullDisplayName().matches(blockingJob)) {
-	                    return currentItem.task;
-	                }
-	            }
-        	}
+            if(item != currentItem) {
+                for (String blockingJob : this.blockingJobs) {
+                    if(currentItem.task.getFullDisplayName().matches(blockingJob)) {
+                        return currentItem.task;
+                    }
+                }
+            }
         }
 
         return null;
