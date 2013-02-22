@@ -1,3 +1,5 @@
+This is a fork of https://github.com/jenkinsci/build-blocker-plugin. The only difference is that this fork waits for any matching job in the queue instead of just the buildable ones.
+
 build-blocker-plugin
 ====================
 
